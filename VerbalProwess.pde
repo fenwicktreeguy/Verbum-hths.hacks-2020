@@ -4,8 +4,14 @@
 ArrayList<Projectile> activeProjectiles = new ArrayList<Projectile>();
 
 public void hitAbility(){
-  for(Operator o : players){
-    
+  for(Projectile p: activeProjectiles){
+    for(int i = 0; i < players.size(); i++){
+      Operator o = players.get(i);
+      if(dist(o.curX, o.curY, p.curX, p.curY) <= 15){
+          println("PLAYER " + (i + 1) + " has been hit!");
+          o.health -= p.damage;
+      }
+    }
   }
 }
 
